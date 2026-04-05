@@ -1,6 +1,12 @@
 # ComfyUI-M-Nodes
 Dynamic notes and randomized prompt selection for ComfyUI.
 
+## Workflow Example
+![Workflow Screenshot](./assets/oMo1.jpg)
+
+## Final Result
+![Result Image](./assets/oMo2.jpg)
+
 # M-Nodes for ComfyUI 🚀
 
 A collection of utility nodes designed to streamline complex prompt engineering, dynamic note-taking, and randomized selection within ComfyUI.
