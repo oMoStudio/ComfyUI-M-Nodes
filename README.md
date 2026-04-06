@@ -1,12 +1,3 @@
-# ComfyUI-M-Nodes
-Dynamic notes and randomized prompt selection for ComfyUI.
-
-## Workflow Example
-![Workflow Screenshot](./assets/oMo1.jpg)
-
-## Final Result
-![Result Image](./assets/oMo2.jpg)
-
 # M-Nodes for ComfyUI 🚀
 
 A collection of utility nodes designed to streamline complex prompt engineering, dynamic note-taking, and randomized selection within ComfyUI.
@@ -39,6 +30,30 @@ Similar to the "Combine All" node, but functions like a **Radio Button** group.
 
   - **Exclusive Selection:** Enabling one note automatically disables all others in the node.
   - **Use Case:** Perfect for testing different art styles or lighting setups without deleting your previous ideas.
+
+-----
+
+### 4\. 💾 Save JPG Advanced
+A bulletproof image saver that goes beyond just exporting pixels. It cleanly exports your images, readable prompt data, and complete workflows without the usual ComfyUI clutter.
+
+Smart Image Handling: Automatically converts problematic RGBA images to RGB (with a clean white background) before saving, preventing common crashes when dealing with PNG-to-JPG conversions.
+
+Workflow Export: Easily save your entire node graph as a .json file right next to your image.
+
+Readable Metadata (.txt): Generates a beautifully formatted text file containing your Seeds, Positive Prompts, and Negative Prompts.
+
+Dynamic Interface: Use the + Add Target Trio and - Remove Target Trio buttons directly on the node to create custom, labeled input slots for your prompt data.
+
+Organized Outputs: Features a dedicated subfolder input, allowing you to easily route your generated images, text files, and JSON workflows into specific directories. This keeps your main output folder perfectly clean.
+
+🕵️ How the "Hybrid" Metadata Saving Works (Deep Dive)
+The real magic of this node lies in how it gathers data for your .txt files. It uses a hybrid "Detective" approach to ensure you get exactly the metadata you want, without duplicate clutter:
+
+Exact Data from Wires (Manual Mode): When you use the + Add Target Trio button, you create explicit groups (e.g., "Group 2"). You can rename the group and plug in specific Positive, Negative, and Seed wires. The node prioritizes this data and writes it clearly at the top of your text file under your custom group name.
+
+Automatic Detection (Fallback Mode): Don't want to wire everything manually? No problem. The node acts as a detective. It silently scans your entire hidden node graph (the workflow map) looking for Sampler and CLIPTextEncode nodes. It traces the wires backward to automatically extract seeds and text prompts that you didn't explicitly plug into the save node.
+
+Smart Deduplication: The script is smart enough to compare the Auto-Detected data against your Wires. If it finds that a prompt or seed has already been saved via a manual wire, it skips it during the automatic phase. This ensures your final .txt file is clean, comprehensive, and free of annoying duplicates.
 
 -----
 
@@ -82,6 +97,5 @@ This project is licensed under the **MIT License** - see the [LICENSE](https://w
 ## Credits
 
 Created by **oMo.Studio** oMo.Studio@proton.me . Optimized for high-end models like **Lumina 2**, **SDXL**, and **Flux**.
-
 
 
