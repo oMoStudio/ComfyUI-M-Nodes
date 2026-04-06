@@ -1,6 +1,9 @@
 # M-Nodes for ComfyUI 🚀
 
 A collection of utility nodes designed to streamline complex prompt engineering, dynamic note-taking, and randomized selection within ComfyUI.
+![Ukázka uzlu 1](assets/oMo1.jpg)
+![Ukázka uzlu 2](assets/oMo2.jpg)
+
 
 ## Features
 
@@ -32,7 +35,7 @@ Similar to the "Combine All" node, but functions like a **Radio Button** group.
   - **Use Case:** Perfect for testing different art styles or lighting setups without deleting your previous ideas.
 
 -----
-
+![Ukázka uzlu 3](assets/oMo3.jpg)
 ### 4\. 💾 Save JPG Advanced
 A bulletproof image saver that goes beyond just exporting pixels. It cleanly exports your images, readable prompt data, and complete workflows without the usual ComfyUI clutter.
 
