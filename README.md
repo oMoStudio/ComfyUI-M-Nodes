@@ -34,7 +34,27 @@ Similar to the "Combine All" node, but functions like a **Radio Button** group.
   - **Exclusive Selection:** Enabling one note automatically disables all others in the node.
   - **Use Case:** Perfect for testing different art styles or lighting setups without deleting your previous ideas.
 
+## 💎 Technical Highlights
+
+  - **Persistence Pro:** Unlike many dynamic nodes, M-Nodes correctly save and restore all fields when:
+      - Switching browser tabs.
+      - Refreshing the page.
+      - Loading a workflow from a saved PNG/JSON.
+  - **Bypassing Limitations:** Uses advanced internal mapping to ensure that dynamically created fields are correctly sent to the Python backend, overcoming the standard LiteGraph limitations.
+  - **Non-Intrusive:** Respects user-defined node widths during dynamic expansion.
+
+## 📖 How to Use
+
+### The "Master Prompt" Workflow
+
+1.  Add a **Multi Note (Combine All)** node. Create separate blocks for `Subject`, `Pose`, `Environment`, and `Style`.
+2.  Right-click the **Random Prompt Selector** and choose `Convert text to input`.
+3.  Connect the `combined_text` output from the Note to the `text` input of the Selector.
+4.  Use the Selector's output to feed your **CLIP Text Encode**.
+5.  This setup allows you to manage massive, complex prompts in an organized way while still enjoying the power of randomized variations.
+
 -----
+
 ![Ukázka uzlu 3](assets/oMo3.jpg)
 ### 4\. 💾 Save JPG Advanced
 A bulletproof image saver that goes beyond just exporting pixels. It cleanly exports your images, readable prompt data, and complete workflows without the usual ComfyUI clutter.
@@ -70,28 +90,7 @@ Smart Deduplication: The script is smart enough to compare the Auto-Detected dat
 
 -----
 
-## 💎 Technical Highlights
 
-  - **Persistence Pro:** Unlike many dynamic nodes, M-Nodes correctly save and restore all fields when:
-      - Switching browser tabs.
-      - Refreshing the page.
-      - Loading a workflow from a saved PNG/JSON.
-  - **Bypassing Limitations:** Uses advanced internal mapping to ensure that dynamically created fields are correctly sent to the Python backend, overcoming the standard LiteGraph limitations.
-  - **Non-Intrusive:** Respects user-defined node widths during dynamic expansion.
-
------
-
-## 📖 How to Use
-
-### The "Master Prompt" Workflow
-
-1.  Add a **Multi Note (Combine All)** node. Create separate blocks for `Subject`, `Pose`, `Environment`, and `Style`.
-2.  Right-click the **Random Prompt Selector** and choose `Convert text to input`.
-3.  Connect the `combined_text` output from the Note to the `text` input of the Selector.
-4.  Use the Selector's output to feed your **CLIP Text Encode**.
-5.  This setup allows you to manage massive, complex prompts in an organized way while still enjoying the power of randomized variations.
-
------
 
 ## 📄 License
 
