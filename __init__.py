@@ -397,19 +397,61 @@ class M_Save_JPG_Advanced:
 
         return {"ui": {"images": results}}
 
+
+class M_ShowText:
+    """
+    ComfyUI Node for debugging and editing text in the UI.
+    Features a lock toggle to prevent upstream nodes from overwriting manual edits.
+    """
+    @classmethod
+    def INPUT_TYPES(s):
+        return {
+            "required": {
+                # Standard text box that renders automatically
+                "text_display": ("STRING", {"multiline": True, "default": ""}),
+                # Mode switch
+                "mode": (["🔄 Always Update", "🔒 Lock & Edit"], {"default": "🔄 Always Update"}),
+            },
+            "optional": {
+                # Input socket is now optional and isolated from the display text widget
+                "text_input": ("STRING", {"forceInput": True}), 
+            }
+        }
+
+    RETURN_TYPES = ("STRING",)
+    RETURN_NAMES = ("text",)
+    FUNCTION = "process"
+    OUTPUT_NODE = True
+    CATEGORY = "M_nodes"
+
+    def process(self, text_display, mode, text_input=None):
+        if mode == "🔄 Always Update":
+            # Fetch text from the wire. If no wire is connected, keep the existing display text.
+            final_text = str(text_input) if text_input is not None else text_display
+        else:
+            # LOCK MODE: Ignore the input wire and use exactly what is written in the text box.
+            final_text = text_display
+        
+        # Send text back to the UI to refresh the widget and downstream into the graph
+        return {"ui": {"text_display": [final_text]}, "result": (final_text,)}
+
+
+
 # Node registration mapping
 NODE_CLASS_MAPPINGS = {
     "M_RandomPromptSelector": M_RandomPromptSelector,
     "M_Multi_Note": M_Multi_Note,
     "M_Multi_Note_One_Select": M_Multi_Note_One_Select,
-    "M_Save_JPG_Advanced": M_Save_JPG_Advanced
+    "M_Save_JPG_Advanced": M_Save_JPG_Advanced,
+    "M_ShowText": M_ShowText
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
     "M_RandomPromptSelector": "Random Prompt {A|B|C} Selector",
     "M_Multi_Note": "Multi Note (Combine All)",
     "M_Multi_Note_One_Select": "Multi Note (One Select)",
-    "M_Save_JPG_Advanced": "Save JPG Advanced"
+    "M_Save_JPG_Advanced": "Save JPG Advanced",
+    "M_ShowText": "Show Text (Debug)"
 }
 
 WEB_DIRECTORY = "./js"
