@@ -79,7 +79,7 @@ Automatic Detection (Fallback Mode): Don't want to wire everything manually? No 
 Smart Deduplication: The script is smart enough to compare the Auto-Detected data against your Wires. If it finds that a prompt or seed has already been saved via a manual wire, it skips it during the automatic phase. This ensures your final .txt file is clean, comprehensive, and free of annoying duplicates.
 
 -----
-![Ukázka uzlu 3](assets/oMo3.jpg)
+![Ukázka uzlu 3](assets/oMo4.jpg)
 5. 🔍 Show Text (Debug)
 A dynamic text viewer and prompt debugger that lets you inspect exactly what is being passed down your workflow. It bridges the gap between complex upstream logic and the CLIP Text Encode, giving you total control over your final text.
 
